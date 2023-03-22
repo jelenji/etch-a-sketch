@@ -2,10 +2,12 @@ const container = document.querySelector('.grid-container');
 const reset = document.querySelector('.reset');
 const black = document.querySelector('.black');
 const color = document.querySelector('.random-color');
+const erase = document.querySelector('.erase');
+const gridUp = document.querySelector('.grid-up');
+const gridDown = document.querySelector('.grid-down');
 
 
-
-let gridSize = 30 , colorToggle = 0, blackToggle = 1;
+let gridSize = 10 , colorToggle = 0, blackToggle = 1, eraseToggle = 0;
 
 function grid(){
     let row, content, squareNum = 0, color;
@@ -30,6 +32,38 @@ function grid(){
     }
 }
 
+function eraseGrid(){
+    let squares = container.querySelectorAll('.square');
+    let rows = container.querySelectorAll('.row');
+
+    squares.forEach(square => {
+        square.remove();
+    })
+
+    rows.forEach(row => {
+        row.remove();
+    })
+    return;
+}
+
+gridUp.addEventListener('click', ()=>{
+    
+    if(gridSize < 100){
+        eraseGrid();
+        gridSize++;
+        grid();
+    }       
+})
+
+gridDown.addEventListener('click', ()=>{
+    
+    if(gridSize > 1){
+        eraseGrid();
+        gridSize--;
+        grid();
+    }       
+})
+
 reset.addEventListener('click', ()=>{
     let squares = container.querySelectorAll('.square');
     squares.forEach(square => {
@@ -41,14 +75,24 @@ reset.addEventListener('click', ()=>{
 black.addEventListener('click', ()=>{
     colorToggle = 0;
     blackToggle = 1;
+    eraseToggle = 0;
 })
 color.addEventListener('click', ()=>{
     colorToggle = 1;
     blackToggle = 0;
+    eraseToggle = 0;
+})
+erase.addEventListener('click', ()=>{
+    colorToggle = 0;
+    blackToggle = 0;
+    eraseToggle = 1;
 })
 function colorDecider(){
     if(blackToggle){
         return '#000000';
+    }
+    else if(eraseToggle){
+        return '#ffffff';
     }
     else{
         return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
