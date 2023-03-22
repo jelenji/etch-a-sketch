@@ -5,9 +5,11 @@ const color = document.querySelector('.random-color');
 const erase = document.querySelector('.erase');
 const gridUp = document.querySelector('.grid-up');
 const gridDown = document.querySelector('.grid-down');
+const btnContainer = document.querySelector('.button-container');
+const allBtns = btnContainer.querySelectorAll('button');
 
 
-let gridSize = 10 , colorToggle = 0, blackToggle = 1, eraseToggle = 0;
+let gridSize = 20 , colorToggle = 0, blackToggle = 1, eraseToggle = 0;
 
 function grid(){
     let row, content, squareNum = 0, color;
@@ -86,6 +88,21 @@ erase.addEventListener('click', ()=>{
     colorToggle = 0;
     blackToggle = 0;
     eraseToggle = 1;
+})
+
+allBtns.forEach(button =>{
+    button.addEventListener('mouseover', (e)=>{
+        e.target.style['background-color'] = '#39ff14';
+        e.target.style['color'] = '#000000';
+
+
+    })
+    button.addEventListener('mouseout', (e)=>{
+        e.target.style['background-color'] = '#000000';
+        e.target.style['color'] = '#39ff14';
+
+
+    })
 })
 function colorDecider(){
     if(blackToggle){

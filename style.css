@@ -1,19 +1,33 @@
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@1,500&display=swap');
+
+
+*{
+    font-family: 'Lora', serif;
+    font-weight: 800;                                  
+}
+
 body{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
+    gap: 50px;
+    background-color: #000000;
 }
 
 .grid-container {
     display: flex;
     flex-direction: column;
-    max-width: 860px;
-    max-height: 860px;
+    min-width: 660px;
+    min-height: 660px;
     margin: 0;
-    border: 3px solid black;
+    color: #ffffff;
+    border: 5px solid #39ff14;
 }
 
 .square {
     flex: 1;
+    background-color: #ffffff;
     border: 1px solid black;
 }
 
@@ -21,5 +35,36 @@ body{
     flex: 1;
     display: flex;
     margin: 0;
-    width: 860px;
+    color: #ffffff;
+}
+
+.button-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-width: 860px;
+}
+
+button{
+    padding: 10px 24px;
+    background-color: black;
+    color: #39ff14;
+    border: 3px solid #39ff14;
+    font-size: 20px;
+}
+
+header{
+    margin-top: 75px;
+    color: #39ff14;
+    font-size: 45px;
+}
+
+footer{
+    color: #ffffff;
+    margin-top: 70px;
+    font-size: 18px;
+}
+
+a {
+    color: #39ff14;
 }
